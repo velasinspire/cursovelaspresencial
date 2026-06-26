@@ -1,0 +1,40 @@
+{
+  "site": {
+    "brandName": "Inspire",
+    "navCta": "Garantir minha vaga",
+    "footerTagline": "Aromas e Velas — Experiências que despertam memórias e sensações.",
+    "footerSlogan": "Desfrute o bem-estar."
+  },
+
+  "course": {
+    "eyebrow": "Curso presencial · Joinville/SC",
+    "date": "18/07",
+    "dateFull": "18 de julho",
+    "time": "10h–15h",
+    "timeFull": "10h às 15h",
+    "timeNote": "com pausa para coffee break",
+    "location": "Joinville/SC",
+    "addressHtml": "Rua João Pinheiro, 248<br>Floresta, Joinville/SC",
+    "spots": 10
+  },
+
+  "pricing": {
+    "fullPriceIntegers": "370",
+    "fullPriceCents": "00",
+    "installmentsText": "em até 2x sem juros no cartão",
+    "pixText": "ou R$ 349,90 à vista no PIX"
+  },
+
+  "scarcity": {
+    "text": "vagas disponíveis — as confirmações acontecem por ordem de pagamento."
+  },
+
+  "testimonial": {
+    "quote": "Tudo maravilhoso e preparado com muito carinho! Indico pra todas.",
+    "author": "Tainara Jensen"
+  },
+
+  "form": {
+    "googleFormLink": "https://forms.gle/4FYy5JHTTGQyP2Ln7"
+  }
+}

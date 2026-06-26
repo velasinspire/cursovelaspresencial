@@ -1,0 +1,12 @@
+{
+  "name": "velas-inspire-landing-build",
+  "private": true,
+  "description": "Ferramentas de build do CSS (Tailwind) para a landing page do curso Velas Inspire. Não é necessário para rodar o site — apenas para recompilar css/tailwind.css depois de alterar classes no index.html.",
+  "scripts": {
+    "build": "tailwindcss -c tailwind.config.js -i input.css -o ../css/tailwind.css --minify",
+    "watch": "tailwindcss -c tailwind.config.js -i input.css -o ../css/tailwind.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

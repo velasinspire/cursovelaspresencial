@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curso Presencial de Velas Artesanais Aromáticas | Inspire</title>
+<meta name="description" content="Curso presencial de velas artesanais aromáticas em Joinville/SC. Vagas limitadas. Uma experiência criativa, prática e acolhedora com a Inspire.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/tailwind.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="relative grain">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 left-0 right-0 z-50" style="background:rgba(251,246,237,0.78); backdrop-filter:blur(8px); border-bottom:1px solid rgba(226,211,184,0.6);">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
+    <div class="font-display text-xl tracking-wide text-ink" data-bind="site.brandName">Inspire</div>
+    <a href="#formulario" class="hidden sm:inline-block text-sm font-medium text-ink border border-ink/20 rounded-full px-5 py-2 hover:bg-ink hover:text-cream transition-colors duration-300">
+      <span data-bind="site.navCta">Garantir minha vaga</span>
+    </a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden">
+
+  <!-- ornament top-left -->
+  <svg class="ornament absolute -left-10 top-16 w-40 h-56 opacity-40 hidden lg:block" viewBox="0 0 160 220">
+    <path d="M10 200 C 40 160, 20 120, 50 90 C 80 60, 60 30, 90 8" />
+    <path d="M50 90 C 60 80, 75 80, 80 70" />
+    <path d="M50 90 C 42 100, 28 100, 22 112" />
+    <path d="M90 8 C 98 4, 108 6, 112 14" />
+  </svg>
+
+  <div class="max-w-6xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative">
+
+    <div class="reveal order-2 lg:order-1">
+      <p class="num-eyebrow mb-5" data-bind="course.eyebrow">Curso presencial · Joinville/SC</p>
+      <h1 class="font-display text-[2.6rem] sm:text-5xl lg:text-[3.4rem] leading-[1.08] text-ink mb-6">
+        Curso Presencial de<br> Velas Artesanais <span class="italic text-clay-dark" style="color:var(--clay-dark)">Aromáticas</span>
+      </h1>
+      <p class="text-umber text-base lg:text-lg leading-relaxed mb-8 max-w-md" style="color:var(--umber)">
+        Aprenda a criar suas próprias velas do zero, de forma prática e guiada, seja para descobrir um novo hobby ou dar os primeiros passos rumo a uma renda extra.
+      </p>
+
+      <a href="#formulario" class="btn-primary inline-flex items-center gap-2 rounded-full px-8 py-4 font-medium text-sm uppercase tracking-wider">
+        <span data-bind="site.navCta">Garantir minha vaga</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-12 max-w-lg">
+        <div class="chip rounded-2xl px-4 py-3">
+          <p class="text-[11px] uppercase tracking-wider text-umber/70 mb-1">Data</p>
+          <p class="font-display text-lg text-ink" data-bind="course.date">18/07</p>
+        </div>
+        <div class="chip rounded-2xl px-4 py-3">
+          <p class="text-[11px] uppercase tracking-wider text-umber/70 mb-1">Horário</p>
+          <p class="font-display text-lg text-ink" data-bind="course.time">10h–15h</p>
+        </div>
+        <div class="chip rounded-2xl px-4 py-3">
+          <p class="text-[11px] uppercase tracking-wider text-umber/70 mb-1">Local</p>
+          <p class="font-display text-lg text-ink" data-bind="course.location">Joinville/SC</p>
+        </div>
+        <div class="chip rounded-2xl px-4 py-3">
+          <p class="text-[11px] uppercase tracking-wider text-umber/70 mb-1">Vagas</p>
+          <p class="font-display text-lg text-ink">Apenas <span data-bind="course.spots">10</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-1 lg:order-2 relative reveal">
+      <div class="img-frame relative aspect-[4/5] lg:aspect-[3/4] shadow-2xl">
+        <img src="assets/images/hero.jpg" alt="Vela artesanal sendo produzida durante o curso Inspire" class="w-full h-full object-cover">
+      </div>
+      <div class="absolute -bottom-6 -left-6 sm:-left-10 bg-cream border border-line rounded-2xl px-5 py-4 shadow-xl max-w-[210px] hidden sm:block">
+        <p class="font-display italic text-base leading-snug text-ink">"<span data-bind="testimonial.quote">Tudo maravilhoso e preparado com muito carinho! Indico pra todas.</span>"</p>
+        <p class="text-[11px] uppercase tracking-wider text-umber/60 mt-2" style="color:var(--umber)">— <span data-bind="testimonial.author">Tainara Jensen</span></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="max-w-4xl mx-auto px-6"><div class="divider-line"></div></div>
+
+<!-- ============ SOBRE O CURSO ============ -->
+<section class="py-20 lg:py-28">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <div class="reveal order-2 lg:order-1">
+      <div class="img-frame relative aspect-[4/5] shadow-xl">
+        <img src="assets/images/sobre-curso.jpg" alt="Mayra conduzindo o curso presencial de velas" class="w-full h-full object-cover">
+      </div>
+    </div>
+
+    <div class="order-1 lg:order-2 reveal">
+      <p class="num-eyebrow mb-4">Sobre o curso</p>
+      <h2 class="font-display text-3xl lg:text-[2.6rem] leading-tight text-ink mb-6">
+        Uma experiência criativa, prática e acolhedora
+      </h2>
+      <p class="text-umber leading-relaxed mb-5" style="color:var(--umber)">
+        Aprenda todo o processo de criação de velas aromáticas artesanais em um encontro presencial pensado para quem deseja desenvolver uma nova habilidade, explorar a criatividade ou dar os primeiros passos para transformar essa arte em uma fonte de renda.
+      </p>
+      <p class="text-umber leading-relaxed" style="color:var(--umber)">
+        Com acompanhamento próximo da Mayra, você produzirá suas próprias velas enquanto aprende cada etapa do processo de forma prática, leve e descomplicada. Mais do que uma aula, essa é uma experiência pensada para que você se sinta segura, aprenda com confiança e saia preparada para continuar criando em casa.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIÊNCIA (fotos das alunas) ============ -->
+<section class="pb-20 lg:pb-28">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
+      <div class="img-frame reveal aspect-[4/5] shadow-lg">
+        <img src="assets/images/experiencia-1.jpg" alt="Aluna cortando cera durante o curso" class="w-full h-full object-cover">
+      </div>
+      <div class="img-frame reveal aspect-[4/5] shadow-lg">
+        <img src="assets/images/experiencia-2.jpg" alt="Detalhe das mãos manuseando recipiente de vela" class="w-full h-full object-cover">
+      </div>
+      <div class="img-frame reveal aspect-[4/5] shadow-lg">
+        <img src="assets/images/experiencia-3.jpg" alt="Cores e formas de cera utilizadas na decoração das velas" class="w-full h-full object-cover">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ O QUE ESTÁ INCLUSO ============ -->
+<section class="py-20 lg:py-28" style="background:var(--sand)">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <div class="text-center mb-14 reveal">
+      <p class="num-eyebrow mb-4">A experiência completa</p>
+      <h2 class="font-display text-3xl lg:text-[2.6rem] text-ink">O que está incluso</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- item -->
+      <div class="card-soft reveal rounded-2xl p-6 flex items-start gap-4">
+        <svg class="shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clay-dark)" stroke-width="1.6"><path d="M4 13l5 5L20 6"/></svg>
+        <p class="text-ink/90 leading-snug">Todo o material utilizado no curso</p>
+      </div>
+      <div class="card-soft reveal rounded-2xl p-6 flex items-start gap-4">
+        <svg class="shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clay-dark)" stroke-width="1.6"><path d="M4 13l5 5L20 6"/></svg>
+        <p class="text-ink/90 leading-snug">Apostila impressa, para consultar sempre que quiser</p>
+      </div>
+      <div class="card-soft reveal rounded-2xl p-6 flex items-start gap-4">
+        <svg class="shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clay-dark)" stroke-width="1.6"><path d="M4 13l5 5L20 6"/></svg>
+        <p class="text-ink/90 leading-snug">União da teoria e prática: a técnica e a arte de produzir velas</p>
+      </div>
+      <div class="card-soft reveal rounded-2xl p-6 flex items-start gap-4">
+        <svg class="shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clay-dark)" stroke-width="1.6"><path d="M4 13l5 5L20 6"/></svg>
+        <p class="text-ink/90 leading-snug">Você leva pra casa a vela feita pelas suas próprias mãos</p>
+      </div>
+      <div class="card-soft reveal rounded-2xl p-6 flex items-start gap-4">
+        <svg class="shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clay-dark)" stroke-width="1.6"><path d="M4 13l5 5L20 6"/></svg>
+        <p class="text-ink/90 leading-snug">Intervalo com café quentinho</p>
+      </div>
+      <div class="card-soft reveal rounded-2xl p-6 flex items-start gap-4">
+        <svg class="shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clay-dark)" stroke-width="1.6"><path d="M4 13l5 5L20 6"/></svg>
+        <p class="text-ink/90 leading-snug">Ambiente acolhedor, com acompanhamento próximo do início ao fim</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BÔNUS ============ -->
+<section class="py-20 lg:py-28">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <div class="text-center mb-14 reveal">
+      <p class="num-eyebrow mb-4">Para além do curso</p>
+      <h2 class="font-display text-3xl lg:text-[2.6rem] text-ink">E ainda tem presentes especiais</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <div class="reveal rounded-3xl p-8 lg:p-10 border border-line" style="background:linear-gradient(155deg, #fff, var(--sand))">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--clay-dark)" stroke-width="1.4" class="mb-5">
+          <path d="M12 3c-2 2-2 4 0 6 2-2 2-4 0-6Z"/><path d="M5 9h14v3H5z"/><path d="M6 12h12l-1 9H7z"/>
+        </svg>
+        <h3 class="font-display text-2xl text-ink mb-3">Demonstração de Home Spray</h3>
+        <p class="text-umber leading-relaxed" style="color:var(--umber)">Você acompanha todo o processo de criação e leva um mini frasco para perfumar sua casa.</p>
+      </div>
+
+      <div class="reveal rounded-3xl p-8 lg:p-10 border border-line" style="background:linear-gradient(155deg, #fff, var(--sand))">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--clay-dark)" stroke-width="1.4" class="mb-5">
+          <path d="M21 11.5a8.5 8.5 0 1 1-3.8-7.1"/><path d="M21 4l-9.5 9.5-3-3"/>
+        </svg>
+        <h3 class="font-display text-2xl text-ink mb-3">Grupo exclusivo de suporte</h3>
+        <p class="text-umber leading-relaxed" style="color:var(--umber)">Acesso a um grupo no WhatsApp por 30 dias para tirar dúvidas com calma, depois do curso.</p>
+      </div>
+
+      <div class="reveal rounded-3xl p-8 lg:p-10 border border-line" style="background:linear-gradient(155deg, #fff, var(--sand))">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--clay-dark)" stroke-width="1.4" class="mb-5">
+          <path d="M4 19.5V6a2 2 0 0 1 2-2h11l3 3v12.5"/><path d="M4 19.5h12.5"/><path d="M8 9h7M8 13h7"/>
+        </svg>
+        <h3 class="font-display text-2xl text-ink mb-3">Lista de fornecedores </h3>
+        <p class="text-umber leading-relaxed" style="color:var(--umber)">Receba uma lista com sugestões de fornecedores para encontrar matérias-primas, embalagens e os principais materiais necessários para continuar produzindo suas velas com mais praticidade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AMBIENTE ============ -->
+<section class="py-20 lg:py-28" style="background:var(--sand)">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <div class="text-center mb-14 reveal">
+      <p class="num-eyebrow mb-4">O encontro</p>
+      <h2 class="font-display text-3xl lg:text-[2.6rem] text-ink">Um intervalo gostoso, no meio da criação</h2>
+      <p class="text-umber max-w-xl mx-auto mt-4" style="color:var(--umber)">Entre uma etapa e outra, fazemos uma pausa para um café e boa conversa. Afinal, na Inspire, aprender também é sobre viver uma experiência acolhedora e se sentir em casa.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-5 lg:gap-6">
+      <div class="img-frame reveal aspect-[5/4] shadow-lg">
+        <img src="assets/images/ambiente-1.jpg" alt="Bolo e café servidos durante o intervalo do curso" class="w-full h-full object-cover">
+      </div>
+      <div class="img-frame reveal aspect-[5/4] shadow-lg">
+        <img src="assets/images/ambiente-2.jpg" alt="Mesa do ateliê preparada para o curso, com flores e velas" class="w-full h-full object-cover">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INFORMAÇÕES DO EVENTO ============ -->
+<section class="py-20 lg:py-28 relative overflow-hidden">
+
+  <svg class="ornament ornament-soft absolute right-0 top-0 w-48 h-48 opacity-40 hidden lg:block" viewBox="0 0 160 160">
+    <path d="M150 10 C 110 20, 100 50, 70 60 C 40 70, 30 100, 10 150" />
+    <path d="M70 60 C 80 55, 90 60, 92 50" />
+  </svg>
+
+  <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center relative reveal">
+    <p class="num-eyebrow mb-4">Informações do evento</p>
+    <h2 class="font-display text-3xl lg:text-[2.4rem] text-ink mb-14">Tudo o que você precisa saber</h2>
+
+    <div class="grid sm:grid-cols-3 gap-10 sm:gap-6 text-left sm:text-center">
+      <div>
+        <p class="font-display text-2xl text-clay-dark mb-2" style="color:var(--clay-dark)">Data</p>
+        <p class="text-ink font-medium" data-bind="course.dateFull">18 de julho</p>
+      </div>
+      <div class="sm:border-x sm:border-line sm:px-6">
+        <p class="font-display text-2xl mb-2" style="color:var(--clay-dark)">Local</p>
+        <p class="text-ink font-medium" data-bind-html="course.addressHtml">Rua João Pinheiro, 248<br>Floresta, Joinville/SC</p>
+      </div>
+      <div>
+        <p class="font-display text-2xl mb-2" style="color:var(--clay-dark)">Horário</p>
+        <p class="text-ink font-medium"><span data-bind="course.timeFull">10h às 15h</span><br><span class="text-sm text-umber" style="color:var(--umber)" data-bind="course.timeNote">com pausa para coffee break</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INVESTIMENTO ============ -->
+<section class="py-20 lg:py-28" style="background:var(--ink)">
+  <div class="max-w-3xl mx-auto px-6 lg:px-10 text-center relative reveal">
+    <p class="text-sand/70 uppercase text-xs tracking-[0.2em] mb-5" style="color:#D8C2A4">Investimento</p>
+
+    <div class="relative inline-block">
+      <svg class="absolute -left-10 -top-6 w-16 h-16 opacity-30 hidden sm:block" viewBox="0 0 60 60">
+        <path d="M5 55 C 15 40, 10 25, 25 15 C 35 8, 35 2, 45 0" stroke="#D8C2A4" stroke-width="1" fill="none" stroke-linecap="round"/>
+      </svg>
+      <h2 class="font-display text-6xl sm:text-7xl text-cream mb-3" style="color:#FBF6ED">R$ <span data-bind="pricing.fullPriceIntegers">370</span><span class="text-3xl align-top">,<span data-bind="pricing.fullPriceCents">00</span></span></h2>
+    </div>
+
+    <p class="text-sand mb-1" style="color:#E7D6B8" data-bind="pricing.installmentsText">em até 2x sem juros no cartão</p>
+    <p class="font-display italic text-xl" style="color:#D8C2A4" data-bind="pricing.pixText">ou R$ 349,90 à vista no PIX</p>
+
+    <a href="#formulario" class="btn-primary inline-flex items-center gap-2 rounded-full px-8 py-4 font-medium text-sm uppercase tracking-wider mt-10">
+      Quero garantir minha vaga
+    </a>
+  </div>
+</section>
+
+<!-- ============ ESCASSEZ ============ -->
+<section class="py-8" style="background:var(--clay)">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <p class="text-cream font-medium text-sm sm:text-base" style="color:#FBF6ED">
+      Apenas <span data-bind="course.spots">10</span> <span data-bind="scarcity.text">vagas disponíveis  as confirmações acontecem por ordem de pagamento.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ FORMULÁRIO ============ -->
+<section id="formulario" class="py-20 lg:py-28">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+    <div class="reveal order-2 lg:order-1 relative">
+      <div class="img-frame relative aspect-[4/5] shadow-xl">
+        <img src="assets/images/vela-formulario.jpg" alt="Vela artesanal recém-feita, ainda quente" class="w-full h-full object-cover">
+      </div>
+    </div>
+
+    <div class="order-1 lg:order-2 reveal">
+      <p class="num-eyebrow mb-4">Inscrição</p>
+      <h2 class="font-display text-3xl lg:text-[2.6rem] text-ink mb-4">Garanta sua vaga</h2>
+      <p class="text-umber leading-relaxed mb-9" style="color:var(--umber)">
+        Preencha seus dados abaixo para receber as informações de pagamento e confirmar sua inscrição.
+      </p>
+
+      <form id="inspire-form" class="space-y-7">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-umber/70 mb-1">Nome</label>
+          <input type="text" required placeholder="Seu nome completo" class="underline-input w-full text-ink placeholder:text-ink/30">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-umber/70 mb-1">WhatsApp</label>
+          <input type="tel" required placeholder="(47) 90000-0000" class="underline-input w-full text-ink placeholder:text-ink/30">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-umber/70 mb-1">E-mail</label>
+          <input type="email" required placeholder="seu@email.com" class="underline-input w-full text-ink placeholder:text-ink/30">
+        </div>
+
+        <button type="submit" class="btn-primary w-full sm:w-auto rounded-full px-10 py-4 font-medium text-sm uppercase tracking-wider mt-2">
+          Quero participar
+        </button>
+        <p class="text-xs text-umber/60" style="color:var(--umber)">Ao confirmar, você será direcionada ao formulário oficial de inscrição.</p>
+
+        <noscript>
+          <p class="text-sm">
+            <a id="form-fallback-link" href="https://forms.gle/4FYy5JHTTGQyP2Ln7" class="underline text-clay-dark" style="color:var(--clay-dark)">
+              Clique aqui para abrir o formulário de inscrição
+            </a>
+          </p>
+        </noscript>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="py-14 border-t border-line">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10 text-center">
+    <div class="font-display text-2xl text-ink mb-3" data-bind="site.brandName">Inspire</div>
+    <p class="text-umber text-sm mb-4" style="color:var(--umber)" data-bind="site.footerTagline">Aromas e Velas — Experiências que despertam memórias e sensações.</p>
+    <p class="font-display italic text-lg text-ink" data-bind="site.footerSlogan">Desfrute o bem-estar.</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+
+</body>
+</html>

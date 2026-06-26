@@ -29,7 +29,7 @@ de tempos em tempos:
 - `course.date`, `course.time`, `course.location`, `course.spots` → data, horário, vagas
 - `pricing.*` → valores do investimento (cartão/PIX)
 - `testimonial.*` → o depoimento em destaque no hero
-- `form.googleFormLink` → link do Google Forms para onde o botão "Quero participar" redireciona
+- `form.googleFormAction` → endpoint `formResponse` do Google Forms usado no envio embutido
 - `site.*` → nome da marca, texto do botão do menu, frase final do rodapé
 
 **Importante sobre como isso funciona:**
@@ -92,13 +92,18 @@ fazer isso para editar apenas textos do `content.json` ou trocar imagens.
 
 ## Formulário de inscrição
 
-O botão "Quero participar" redireciona para o link definido em
-`data/content.json` → `form.googleFormLink`. Atualmente:
+O botão "Quero participar" envia os dados diretamente para o Google Forms
+por POST em um iframe oculto, sem redirecionar a visitante. O endpoint fica definido em
+`data/content.json` → `form.googleFormAction`. Atualmente:
 
 ```
-https://forms.gle/4FYy5JHTTGQyP2Ln7
+https://docs.google.com/forms/d/e/1FAIpQLSeXjSrhtcs1ZSEsIRyGsXXQ7t3UksM0sWoQd7LLiKjoq_BSSA/formResponse
 ```
 
-Para trocar o formulário, basta atualizar esse valor (e, se for o caso, o
-mesmo campo dentro de `DEFAULT_DATA` em `js/main.js`, pelo motivo explicado
-acima).
+Para trocar o formulário, atualize esse valor, os nomes `entry.*` dos campos
+no `index.html` e, se for o caso, o mesmo campo dentro de `DEFAULT_DATA` em
+`js/main.js`, pelo motivo explicado acima.
+
+O Google Forms precisa estar aceitando respostas. Se o formulário estiver
+fechado, exigindo login ou com a turma marcada como completa, o Google retorna
+erro no `formResponse` e a página não consegue registrar a inscrição.

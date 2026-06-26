@@ -12,6 +12,7 @@
 
 <link rel="stylesheet" href="css/tailwind.css">
 <link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%23C17F58'/%3E%3Cpath d='M16 6c3 3 3 6 0 9-3-3-3-6 0-9Z' fill='%23FBF6ED'/%3E%3Cpath d='M10 16h12v3H10zM11 19h10l-1 7h-8z' fill='%23FBF6ED'/%3E%3C/svg%3E">
 </head>
 <body class="relative grain">
 
@@ -297,31 +298,68 @@
         Preencha seus dados abaixo para receber as informações de pagamento e confirmar sua inscrição.
       </p>
 
-      <form id="inspire-form" class="space-y-7">
+      <iframe id="google-form-target" name="google-form-target" class="sr-only-iframe" title="Envio do formulário" aria-hidden="true"></iframe>
+
+      <form id="inspire-form" class="space-y-7" method="POST" target="google-form-target">
+        <input type="hidden" name="fvv" value="1">
+        <input type="hidden" name="pageHistory" value="0">
+        <input type="hidden" name="submissionTimestamp" value="-1">
         <div>
-          <label class="block text-xs uppercase tracking-wider text-umber/70 mb-1">Nome</label>
-          <input type="text" required placeholder="Seu nome completo" class="underline-input w-full text-ink placeholder:text-ink/30">
+          <label for="nome" class="block text-xs uppercase tracking-wider text-umber/70 mb-1">Nome</label>
+          <input id="nome" name="entry.1781368019" type="text" required autocomplete="name" placeholder="Seu nome completo" class="underline-input w-full text-ink placeholder:text-ink/30">
         </div>
         <div>
-          <label class="block text-xs uppercase tracking-wider text-umber/70 mb-1">WhatsApp</label>
-          <input type="tel" required placeholder="(47) 90000-0000" class="underline-input w-full text-ink placeholder:text-ink/30">
+          <label for="whatsapp" class="block text-xs uppercase tracking-wider text-umber/70 mb-1">WhatsApp</label>
+          <input id="whatsapp" name="entry.957353574" type="tel" required autocomplete="tel" placeholder="(47) 90000-0000" class="underline-input w-full text-ink placeholder:text-ink/30">
         </div>
         <div>
-          <label class="block text-xs uppercase tracking-wider text-umber/70 mb-1">E-mail</label>
-          <input type="email" required placeholder="seu@email.com" class="underline-input w-full text-ink placeholder:text-ink/30">
+          <label for="email" class="block text-xs uppercase tracking-wider text-umber/70 mb-1">E-mail</label>
+          <input id="email" name="entry.286472191" type="email" required autocomplete="email" placeholder="seu@email.com" class="underline-input w-full text-ink placeholder:text-ink/30">
+        </div>
+        <div>
+          <label for="pagamento" class="block text-xs uppercase tracking-wider text-umber/70 mb-1">Forma de pagamento</label>
+          <select id="pagamento" name="entry.281519828" required class="underline-input form-select w-full text-ink">
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="PIX com desconto (R$ 349,90)">PIX com desconto (R$ 349,90)</option>
+            <option value="Cartão de crédito,até 2x sem juros (R$ 370,00)">Cartão de crédito em até 2x sem juros (R$ 370,00)</option>
+          </select>
+        </div>
+        <div>
+          <label for="experiencia" class="block text-xs uppercase tracking-wider text-umber/70 mb-1">Experiência com velas</label>
+          <select id="experiencia" name="entry.1057809280" required class="underline-input form-select w-full text-ink">
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="Nunca fiz, estou começando do zero">Nunca fiz, estou começando do zero</option>
+            <option value="Já faço como hobby">Já faço como hobby</option>
+            <option value="Já faço e vendo">Já faço e vendo</option>
+          </select>
+        </div>
+        <div>
+          <label for="objetivo" class="block text-xs uppercase tracking-wider text-umber/70 mb-1">Objetivo</label>
+          <select id="objetivo" name="entry.1426693859" required class="underline-input form-select w-full text-ink">
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="Aprender algo novo">Aprender algo novo</option>
+            <option value="Ter um hobby manual">Ter um hobby manual</option>
+            <option value="Possibilidade de renda extra">Possibilidade de renda extra</option>
+            <option value="Curiosidade / interesse pessoal">Curiosidade / interesse pessoal</option>
+          </select>
+        </div>
+        <div>
+          <label for="imagem" class="block text-xs uppercase tracking-wider text-umber/70 mb-1">Autorização de uso de imagem</label>
+          <select id="imagem" name="entry.1695668681" required class="underline-input form-select w-full text-ink">
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="Sim, autorizo o uso da minha imagem.">Sim, autorizo o uso da minha imagem</option>
+            <option value="Não autorizo o uso da minha imagem.">Não autorizo o uso da minha imagem</option>
+          </select>
         </div>
 
-        <button type="submit" class="btn-primary w-full sm:w-auto rounded-full px-10 py-4 font-medium text-sm uppercase tracking-wider mt-2">
-          Quero participar
+        <button type="submit" class="btn-primary w-full sm:w-auto rounded-full px-10 py-4 font-medium text-sm uppercase tracking-wider mt-2" data-default-label="Quero participar" data-loading-label="Enviando...">
+          <span>Quero participar</span>
         </button>
-        <p class="text-xs text-umber/60" style="color:var(--umber)">Ao confirmar, você será direcionada ao formulário oficial de inscrição.</p>
+        <p class="text-xs text-umber/60" style="color:var(--umber)">Ao confirmar, sua inscrição será enviada para a equipe Inspire.</p>
+        <p id="form-status" class="form-status text-sm" role="status" aria-live="polite"></p>
 
         <noscript>
-          <p class="text-sm">
-            <a id="form-fallback-link" href="https://forms.gle/4FYy5JHTTGQyP2Ln7" class="underline text-clay-dark" style="color:var(--clay-dark)">
-              Clique aqui para abrir o formulário de inscrição
-            </a>
-          </p>
+          <p class="text-sm text-umber" style="color:var(--umber)">Ative o JavaScript para enviar sua inscrição por esta página.</p>
         </noscript>
       </form>
     </div>

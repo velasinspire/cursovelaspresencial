@@ -56,7 +56,7 @@
       author: "Tainara Jensen"
     },
     form: {
-      googleFormLink: "https://forms.gle/4FYy5JHTTGQyP2Ln7"
+      googleFormAction: "https://docs.google.com/forms/d/e/1FAIpQLSeXjSrhtcs1ZSEsIRyGsXXQ7t3UksM0sWoQd7LLiKjoq_BSSA/formResponse"
     }
   };
 
@@ -83,12 +83,6 @@
     });
 
     window.__SITE_DATA__ = data;
-
-    // atualiza o link de fallback do formulário (caso JS de submit não rode por algum motivo)
-    const fallbackLink = document.getElementById("form-fallback-link");
-    if (fallbackLink && data.form && data.form.googleFormLink) {
-      fallbackLink.setAttribute("href", data.form.googleFormLink);
-    }
   }
 
   // 1) aplica os valores padrão imediatamente — garante que a página nunca fique em branco
@@ -132,16 +126,63 @@
     const form = document.getElementById("inspire-form");
     if (!form) return;
 
+    const submitButton = form.querySelector('button[type="submit"]');
+    const submitLabel = submitButton ? submitButton.querySelector("span") : null;
+    const status = document.getElementById("form-status");
+    const targetFrame = document.getElementById("google-form-target");
+    let submitTimer;
+
+    function setStatus(message, type) {
+      if (!status) return;
+      status.textContent = message;
+      status.classList.remove("is-success", "is-error");
+      if (type) status.classList.add(type);
+    }
+
+    function setSubmitting(isSubmitting) {
+      if (!submitButton) return;
+      submitButton.disabled = isSubmitting;
+      submitButton.setAttribute("aria-busy", isSubmitting ? "true" : "false");
+      if (submitLabel) {
+        submitLabel.textContent = isSubmitting
+          ? submitButton.getAttribute("data-loading-label")
+          : submitButton.getAttribute("data-default-label");
+      }
+    }
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      const link = window.__SITE_DATA__ && window.__SITE_DATA__.form && window.__SITE_DATA__.form.googleFormLink;
+      const action = window.__SITE_DATA__ && window.__SITE_DATA__.form && window.__SITE_DATA__.form.googleFormAction;
 
-      if (!link) {
-        alert("O link do formulário de inscrição ainda não foi configurado em data/content.json.");
+      if (!form.checkValidity()) {
+        form.reportValidity();
         return;
       }
 
-      window.location.href = link;
+      if (!action) {
+        setStatus("Não foi possível encontrar a configuração de envio. Tente novamente em instantes.", "is-error");
+        return;
+      }
+
+      setSubmitting(true);
+      setStatus("Enviando sua inscrição...", null);
+      form.setAttribute("action", action);
+
+      if (targetFrame) {
+        targetFrame.onload = function () {
+          clearTimeout(submitTimer);
+          form.reset();
+          setStatus("Inscrição enviada com sucesso! Em breve entraremos em contato com as informações de pagamento.", "is-success");
+          setSubmitting(false);
+        };
+      }
+
+      submitTimer = window.setTimeout(function () {
+        setStatus("Não conseguimos confirmar o envio agora. Verifique sua conexão e tente novamente.", "is-error");
+        setSubmitting(false);
+      }, 12000);
+
+      form.submit();
     });
   }
 

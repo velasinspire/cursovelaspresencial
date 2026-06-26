@@ -53,6 +53,12 @@ body{
   transform:translateY(-2px);
   box-shadow: 0 14px 28px -10px rgba(161,98,63,.65);
 }
+.btn-primary:disabled{
+  cursor:not-allowed;
+  opacity:.72;
+  transform:none;
+  box-shadow: 0 10px 24px -12px rgba(161,98,63,.45);
+}
 
 .underline-input{
   background:transparent;
@@ -62,6 +68,29 @@ body{
   padding:.65rem .1rem;
 }
 .underline-input:focus{ outline:none; border-color:var(--clay); }
+
+.form-select{
+  border-radius:0;
+  color:var(--ink);
+  cursor:pointer;
+}
+.form-select:invalid{ color:rgba(59,42,30,.45); }
+
+.form-status{
+  min-height:1.4rem;
+  color:var(--umber);
+}
+.form-status.is-success{ color:var(--clay-dark); }
+.form-status.is-error{ color:#8f3d2e; }
+
+.sr-only-iframe{
+  position:absolute;
+  width:1px;
+  height:1px;
+  border:0;
+  opacity:0;
+  pointer-events:none;
+}
 
 .card-soft{
   background: #ffffff;

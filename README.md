@@ -123,6 +123,11 @@ O formulário da lista de espera envia para o aplicativo web definido em
 `consentimento_versao` e `origem`. A planilha deve acrescentar a data e hora do
 recebimento no servidor.
 
+O código pronto para colar no editor do Google está em
+`google-apps-script/Code.gs`. Depois de colar, salve e publique uma nova versão
+da implantação como aplicativo da web, executando como o proprietário e com
+acesso permitido a qualquer pessoa.
+
 Como `DEFAULT_DATA` mantém o site funcional quando aberto diretamente pelo
 arquivo, ao trocar definitivamente o modo também atualize `registration.mode`
 em `js/main.js`.

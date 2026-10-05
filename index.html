@@ -21,7 +21,7 @@
   <div class="max-w-6xl mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
     <div class="font-display text-xl tracking-wide text-ink" data-bind="site.brandName">Inspire</div>
     <a href="#formulario" class="hidden sm:inline-block text-sm font-medium text-ink border border-ink/20 rounded-full px-5 py-2 hover:bg-ink hover:text-cream transition-colors duration-300">
-      <span data-bind="site.navCta">Garantir minha vaga</span>
+      <span data-bind="site.navCta" data-mode-cta>Garantir minha vaga</span>
     </a>
   </div>
 </header>
@@ -49,11 +49,11 @@
       </p>
 
       <a href="#formulario" class="btn-primary inline-flex items-center gap-2 rounded-full px-8 py-4 font-medium text-sm uppercase tracking-wider">
-        <span data-bind="site.navCta">Garantir minha vaga</span>
+        <span data-bind="site.navCta" data-mode-cta>Garantir minha vaga</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
 
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-12 max-w-lg">
+      <div data-registration="enrollment" hidden class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-12 max-w-lg">
         <div class="chip rounded-2xl px-4 py-3">
           <p class="text-[11px] uppercase tracking-wider text-umber/70 mb-1">Data</p>
           <p class="font-display text-lg text-ink" data-bind="course.date">18/07</p>
@@ -70,6 +70,10 @@
           <p class="text-[11px] uppercase tracking-wider text-umber/70 mb-1">Vagas</p>
           <p class="font-display text-lg text-ink">Apenas <span data-bind="course.spots">10</span></p>
         </div>
+      </div>
+      <div data-registration="waitlist" class="chip rounded-2xl px-5 py-4 mt-10 max-w-lg">
+        <p class="font-display text-xl text-ink mb-1">Nova turma em planejamento</p>
+        <p class="text-sm leading-relaxed text-umber" style="color:var(--umber)">Entre na lista de espera para receber as próximas datas em primeira mão.</p>
       </div>
     </div>
 
@@ -223,7 +227,7 @@
 </section>
 
 <!-- ============ INFORMAÇÕES DO EVENTO ============ -->
-<section class="py-20 lg:py-28 relative overflow-hidden">
+<section data-registration="enrollment" hidden class="py-20 lg:py-28 relative overflow-hidden">
 
   <svg class="ornament ornament-soft absolute right-0 top-0 w-48 h-48 opacity-40 hidden lg:block" viewBox="0 0 160 160">
     <path d="M150 10 C 110 20, 100 50, 70 60 C 40 70, 30 100, 10 150" />
@@ -252,7 +256,7 @@
 </section>
 
 <!-- ============ INVESTIMENTO ============ -->
-<section class="py-20 lg:py-28" style="background:var(--ink)">
+<section data-registration="enrollment" hidden class="py-20 lg:py-28" style="background:var(--ink)">
   <div class="max-w-3xl mx-auto px-6 lg:px-10 text-center relative reveal">
     <p class="text-sand/70 uppercase text-xs tracking-[0.2em] mb-5" style="color:#D8C2A4">Investimento</p>
 
@@ -273,7 +277,7 @@
 </section>
 
 <!-- ============ ESCASSEZ ============ -->
-<section class="py-8" style="background:var(--clay)">
+<section data-registration="enrollment" hidden class="py-8" style="background:var(--clay)">
   <div class="max-w-4xl mx-auto px-6 text-center">
     <p class="text-cream font-medium text-sm sm:text-base" style="color:#FBF6ED">
       Apenas <span data-bind="course.spots">10</span> <span data-bind="scarcity.text">vagas disponíveis  as confirmações acontecem por ordem de pagamento.</span>
@@ -282,7 +286,7 @@
 </section>
 
 <!-- ============ FORMULÁRIO ============ -->
-<section id="formulario" class="py-20 lg:py-28">
+<section id="inscricao" data-form-kind="enrollment" data-registration="enrollment" hidden class="py-20 lg:py-28">
   <div class="max-w-6xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
     <div class="reveal order-2 lg:order-1 relative">
@@ -360,6 +364,61 @@
 
         <noscript>
           <p class="text-sm text-umber" style="color:var(--umber)">Ative o JavaScript para enviar sua inscrição por esta página.</p>
+        </noscript>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LISTA DE ESPERA ============ -->
+<section id="lista-espera" data-form-kind="waitlist" data-registration="waitlist" class="py-20 lg:py-28">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div class="reveal order-2 lg:order-1 relative">
+      <div class="img-frame relative aspect-[4/5] shadow-xl">
+        <img src="assets/images/vela-formulario.jpg" alt="Vela artesanal recém-feita, ainda quente" class="w-full h-full object-cover">
+      </div>
+    </div>
+
+    <div class="order-1 lg:order-2 reveal">
+      <p class="num-eyebrow mb-4">Lista de espera</p>
+      <h2 class="font-display text-3xl lg:text-[2.6rem] text-ink mb-4">Quero saber da próxima turma</h2>
+      <p class="text-umber leading-relaxed mb-9" style="color:var(--umber)">
+        Deixe seus dados e avisaremos assim que uma nova data for definida. Participar da lista é gratuito e não representa compromisso de matrícula.
+      </p>
+
+      <iframe id="waitlist-target" name="waitlist-target" class="sr-only-iframe" title="Envio da lista de espera" aria-hidden="true"></iframe>
+
+      <form id="waitlist-form" class="space-y-7" method="POST" target="waitlist-target">
+        <input type="hidden" name="consentimento_texto" value="">
+        <input type="hidden" name="consentimento_versao" value="">
+        <input type="hidden" name="origem" value="Site — lista de espera">
+        <div>
+          <label for="waitlist-nome" class="block text-xs uppercase tracking-wider text-umber/70 mb-1">Nome completo</label>
+          <input id="waitlist-nome" name="nome" type="text" required autocomplete="name" placeholder="Seu nome completo" class="underline-input w-full text-ink placeholder:text-ink/30">
+        </div>
+        <div>
+          <label for="waitlist-whatsapp" class="block text-xs uppercase tracking-wider text-umber/70 mb-1">WhatsApp com DDD</label>
+          <input id="waitlist-whatsapp" name="whatsapp" type="tel" required autocomplete="tel" inputmode="tel" minlength="10" placeholder="(47) 90000-0000" class="underline-input w-full text-ink placeholder:text-ink/30">
+        </div>
+        <div>
+          <label for="waitlist-email" class="block text-xs uppercase tracking-wider text-umber/70 mb-1">Melhor e-mail <span class="normal-case tracking-normal">(opcional)</span></label>
+          <input id="waitlist-email" name="email" type="email" autocomplete="email" placeholder="seu@email.com" class="underline-input w-full text-ink placeholder:text-ink/30">
+        </div>
+        <div class="flex items-start gap-3">
+          <input id="waitlist-consentimento" name="consentimento" type="checkbox" value="Sim" required class="mt-1 h-4 w-4 shrink-0 accent-clay">
+          <label id="consentimento-label" for="waitlist-consentimento" class="text-sm leading-relaxed text-umber" style="color:var(--umber)">
+            Autorizo a Inspire a utilizar meu nome e WhatsApp e, caso informado, meu e-mail, para entrar em contato comigo sobre novas turmas do Curso Presencial de Velas Artesanais. Sei que posso retirar esta autorização a qualquer momento pelo WhatsApp <span data-bind="registration.privacyContact">(47) 9622-2557</span>.
+          </label>
+        </div>
+
+        <button type="submit" class="btn-primary w-full sm:w-auto rounded-full px-10 py-4 font-medium text-sm uppercase tracking-wider mt-2" data-default-label="Entrar na lista de espera" data-loading-label="Enviando...">
+          <span>Entrar na lista de espera</span>
+        </button>
+        <p class="text-xs text-umber/60" style="color:var(--umber)">Seus dados serão usados somente para avisos relacionados às próximas turmas.</p>
+        <p id="waitlist-status" class="form-status text-sm" role="status" aria-live="polite"></p>
+
+        <noscript>
+          <p class="text-sm text-umber" style="color:var(--umber)">Ative o JavaScript para entrar na lista de espera por esta página.</p>
         </noscript>
       </form>
     </div>

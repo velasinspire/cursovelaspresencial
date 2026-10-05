@@ -107,3 +107,22 @@ no `index.html` e, se for o caso, o mesmo campo dentro de `DEFAULT_DATA` em
 O Google Forms precisa estar aceitando respostas. Se o formulário estiver
 fechado, exigindo login ou com a turma marcada como completa, o Google retorna
 erro no `formResponse` e a página não consegue registrar a inscrição.
+
+## Lista de espera e reabertura das inscrições
+
+O modo exibido no site é controlado por `registration.mode` em
+`data/content.json`:
+
+- `"waitlist"` mostra a lista de espera e oculta data, investimento, vagas e o
+  formulário de matrícula;
+- `"enrollment"` restaura essas seções e o formulário de matrícula existente.
+
+O formulário da lista de espera envia para o aplicativo web definido em
+`registration.waitlistAction`. O Apps Script deve aceitar via `POST` os campos
+`nome`, `whatsapp`, `email`, `consentimento`, `consentimento_texto`,
+`consentimento_versao` e `origem`. A planilha deve acrescentar a data e hora do
+recebimento no servidor.
+
+Como `DEFAULT_DATA` mantém o site funcional quando aberto diretamente pelo
+arquivo, ao trocar definitivamente o modo também atualize `registration.mode`
+em `js/main.js`.

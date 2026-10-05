@@ -1,9 +1,16 @@
 {
   "site": {
     "brandName": "Inspire",
-    "navCta": "Garantir minha vaga",
+    "navCta": "Entrar na lista de espera",
     "footerTagline": "Aromas e Velas — Experiências que despertam memórias e sensações.",
     "footerSlogan": "Desfrute o bem-estar."
+  },
+
+  "registration": {
+    "mode": "waitlist",
+    "waitlistAction": "https://script.google.com/macros/s/AKfycbyupnSHn8RhsfCnsbIPlNV_kKS4eAtbY6-WHjsR5sLCzWOVaUyJgUET03ZKH0acsGJnEg/exec",
+    "privacyContact": "(47) 9622-2557",
+    "consentVersion": "lista-espera-v1-2026-10-05"
   },
 
   "course": {

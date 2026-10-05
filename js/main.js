@@ -27,9 +27,15 @@
   const DEFAULT_DATA = {
     site: {
       brandName: "Inspire",
-      navCta: "Garantir minha vaga",
+      navCta: "Entrar na lista de espera",
       footerTagline: "Aromas e Velas — Experiências que despertam memórias e sensações.",
       footerSlogan: "Desfrute o bem-estar."
+    },
+    registration: {
+      mode: "waitlist",
+      waitlistAction: "https://script.google.com/macros/s/AKfycbyupnSHn8RhsfCnsbIPlNV_kKS4eAtbY6-WHjsR5sLCzWOVaUyJgUET03ZKH0acsGJnEg/exec",
+      privacyContact: "(47) 9622-2557",
+      consentVersion: "lista-espera-v1-2026-10-05"
     },
     course: {
       eyebrow: "Curso presencial · Joinville/SC",
@@ -82,6 +88,21 @@
       if (value !== undefined) el.innerHTML = value;
     });
 
+    const mode = getPath(data, "registration.mode") === "enrollment" ? "enrollment" : "waitlist";
+    document.querySelectorAll("[data-registration]").forEach((el) => {
+      el.hidden = el.getAttribute("data-registration") !== mode;
+    });
+    document.querySelectorAll("[data-mode-cta]").forEach((el) => {
+      el.textContent = mode === "enrollment" ? "Garantir minha vaga" : "Entrar na lista de espera";
+    });
+
+    const waitlistSection = document.querySelector('[data-form-kind="waitlist"]');
+    const enrollmentSection = document.querySelector('[data-form-kind="enrollment"]');
+    if (waitlistSection && enrollmentSection) {
+      waitlistSection.id = mode === "waitlist" ? "formulario" : "lista-espera";
+      enrollmentSection.id = mode === "enrollment" ? "formulario" : "inscricao";
+    }
+
     window.__SITE_DATA__ = data;
   }
 
@@ -120,7 +141,7 @@
   }
 
   /* ---------------------------------------------------------------------- */
-  /* Formulário de inscrição                                                */
+  /* Formulários                                                            */
   /* ---------------------------------------------------------------------- */
   function initForm() {
     const form = document.getElementById("inspire-form");
@@ -186,8 +207,84 @@
     });
   }
 
+  function initWaitlistForm() {
+    const form = document.getElementById("waitlist-form");
+    if (!form) return;
+
+    const submitButton = form.querySelector('button[type="submit"]');
+    const submitLabel = submitButton ? submitButton.querySelector("span") : null;
+    const status = document.getElementById("waitlist-status");
+    const targetFrame = document.getElementById("waitlist-target");
+    const consentText = form.querySelector('input[name="consentimento_texto"]');
+    const consentVersion = form.querySelector('input[name="consentimento_versao"]');
+    let submitted = false;
+    let submitTimer;
+
+    function setStatus(message, type) {
+      status.textContent = message;
+      status.classList.remove("is-success", "is-error");
+      if (type) status.classList.add(type);
+    }
+
+    function setSubmitting(isSubmitting) {
+      submitButton.disabled = isSubmitting;
+      submitButton.setAttribute("aria-busy", isSubmitting ? "true" : "false");
+      submitLabel.textContent = isSubmitting
+        ? submitButton.getAttribute("data-loading-label")
+        : submitButton.getAttribute("data-default-label");
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const registration = window.__SITE_DATA__ && window.__SITE_DATA__.registration;
+      const whatsappInput = form.querySelector('input[name="whatsapp"]');
+      const whatsappDigits = whatsappInput.value.replace(/\D/g, "");
+
+      whatsappInput.setCustomValidity(
+        whatsappDigits.length === 10 || whatsappDigits.length === 11
+          ? ""
+          : "Informe um WhatsApp válido com DDD."
+      );
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      if (!registration || !registration.waitlistAction) {
+        setStatus("Não foi possível encontrar a configuração de envio. Tente novamente em instantes.", "is-error");
+        return;
+      }
+
+      consentText.value = document.getElementById("consentimento-label").textContent.trim();
+      consentVersion.value = registration.consentVersion || "lista-espera-v1";
+      form.action = registration.waitlistAction;
+      submitted = true;
+      setSubmitting(true);
+      setStatus("Enviando seus dados...", null);
+
+      submitTimer = window.setTimeout(function () {
+        submitted = false;
+        setSubmitting(false);
+        setStatus("Não conseguimos confirmar o envio agora. Verifique sua conexão e tente novamente.", "is-error");
+      }, 15000);
+
+      form.submit();
+    });
+
+    targetFrame.addEventListener("load", function () {
+      if (!submitted) return;
+      submitted = false;
+      clearTimeout(submitTimer);
+      form.reset();
+      setSubmitting(false);
+      setStatus("Tudo certo! Você entrou na lista de espera. Avisaremos quando uma nova turma for definida.", "is-success");
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initRevealAnimations();
     initForm();
+    initWaitlistForm();
   });
 })();
